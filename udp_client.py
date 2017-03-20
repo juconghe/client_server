@@ -26,7 +26,7 @@ try:
             # set time out
             s.settimeout(d)
             # connect to the server
-            s.connect(('localhost',12345))
+            s.connect(('127.0.0.1',12345))
             # print("connected to the server")
             # send message in JSON format
             s.send(json.dumps({'OC':OC,'num1':num1,'num2':num2}))
@@ -55,6 +55,7 @@ try:
             else:
                 # indicate time out reach 2, abort task and let user start new task
                 if d < 2:
+                    print('Retrying')
                     d *= 2.0
                     failed = True
                 else:

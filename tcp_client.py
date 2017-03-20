@@ -6,7 +6,7 @@ try:
         # create a socket
         s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         # connect to the server
-        s.connect(('localhost',12345))
+        s.connect(('127.0.0.1',12345))
         # print("connected to the server")
         # accept input
         OC = raw_input('Enter the OC: ')

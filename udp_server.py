@@ -34,13 +34,15 @@ def clientThread(sock):
             message = message = json.dumps({'status':200,'value':num1/num2})
         # send message to client in JSON formate
         sock.send(message)
+    sock.close()
+
 
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 print("Socket created")
 try:
-    #open server at address localhost with port 12345
-    s.bind(('localhost',12345))
+    #open server at address 127.0.0.1 with port 12345
+    s.bind(('127.0.0.1',12345))
     # set max clients to 5
     s.listen(5)
     while True:
@@ -52,7 +54,7 @@ try:
             # if not fail handle the request
             start_new_thread(clientThread,(clientsocket,))
         else:
-            # just ignore the request 
+            # just ignore the request
             print("Failed")
             pass
 except socket.error as e:
